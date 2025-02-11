@@ -1,0 +1,50 @@
+[
+    {
+        "xtype": "textfield",
+        "fieldLabel": "#Name",
+        "name": "name",
+        "maxLength": 50,
+        "allowBlank": false
+    }, 
+    {
+        "xtype": "textfield",
+        "fieldLabel": "#Shortname",
+        "name": "shortname",
+        "maxLength": 30,
+        "allowBlank": false
+    },
+    {
+        "xtype": "textfield",
+        "fieldLabel": "#Description",
+        "name": "description",
+        "maxLength": 255,
+        "allowBlank": true
+    },
+    {
+        "xtype": "tagfield",
+        "fieldLabel": "#Parents",
+        "name": "parentsId",
+        "store": {
+            "fields": ["id", "name"],
+            "proxy": {
+                "type": "ajax",
+                "url": "@comboStoreUrl",
+                "extraParams": {"combo": "role"},
+                "reader": {
+                    "type": "array",
+                    "rootProperty": "data"
+                }
+            }
+        },
+        "encodeSubmitValue": true,
+        "displayField": "name",
+        "valueField": "id",
+        "createNewOnEnter": false,
+        "createNewOnBlur": false,
+        "filterPickList": true,
+        "queryMode": "remote",
+        "publishes": "value",
+        "allowBlank": true,
+        "dirty": false
+    }
+]

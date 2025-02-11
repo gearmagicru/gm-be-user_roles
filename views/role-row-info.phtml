@@ -1,0 +1,75 @@
+<?php
+use Gm\Panel\Helper\HtmlGridRowExpander as grid;
+
+if (!isset($id)) :
+?>
+<div class="g-grid__rowbody-none"><?= $translate('No information to display') ?></div>
+<?php else : ?>
+<div class="g-grid__rowbody">
+<?php
+$manager = $form->getDataManager();
+// если запись не активна для правки
+$lockRow = isset($lockRow) ? (int) $lockRow : 0;
+if ($lockRow) {
+    $roles = Gm::$app->user->getIdentity()->getRoles();
+    if ($roles->has($id)) {
+        $lockRow = 0;
+    }
+}
+?>
+<div class="g-grid__rowbody-buttons">
+<?php if ($lockRow == 0) : ?>
+<?= grid::rowButton(
+        $translate('Edit record'),
+        Gm::alias('@match', '/form/view/' . $id),
+        ['iconCls' => 'g-icon g-icon-svg g-icon_size_16 g-icon-m_edit g-icon-m_color_default']
+) ?> 
+<?= grid::rowButton(
+        $translate('Modules permissions'),
+        Gm::alias('@match', '/modules/grid/view/' . $id),
+        ['iconCls' => 'g-icon g-icon-svg g-icon_size_16 g-icon_module_small']
+) ?> 
+<?= grid::rowButton(
+        $translate('Extensions permissions'),
+        Gm::alias('@match', '/extensions/grid/view/' . $id),
+        ['iconCls' => 'g-icon g-icon-svg g-icon_size_16 g-icon_extension_small'])
+?>
+<?php endif ?>
+</div>
+<div class="g-grid__rowbody-title"><?= $translate('Record Information') ?> "<span><?= $name ?></span>"</div>
+<div class="row g-grid__rowbody-fields">
+    <div class="col-md-6">
+<?= grid::rowField($translate('Record ID'), $id) ?>
+<?= grid::rowField($translate('Shortname'), $shortname) ?>
+<?= grid::rowField($translate('Description'), $description) ?>
+     </div>
+</div>
+<?php 
+if ($manager->canViewAudit()) : 
+    $updatedUrl = $form->getAuditUrl('updated', $name);
+    $createdUrl = $form->getAuditUrl('created', $name);
+    if ($updatedUrl || $createdUrl) :
+?>
+    <div class="g-grid__rowbody-title"><?= Gm::t(BACKEND, 'Record audit', array($name)) ?></div>
+    <div class="row g-grid__rowbody-buttons">
+        <div class="col-md-6">
+        <? if ($updatedUrl) : ?>
+        <?= grid::rowButton(
+                Gm::t(BACKEND, 'Updated record date: {0}',[date('d/m/Y H:I:s', strtotime($logUpdatedDate))]),
+                $updatedUrl,
+                ['iconCls' => 'g-icon g-icon-svg g-icon_size_16 g-icon-m_history g-icon-m_color_default']
+        ) ?>
+        <?php endif ?>
+        <? if ($createdUrl) : ?>
+        <?= grid::rowButton(
+                Gm::t(BACKEND, 'Created record date: {0}', [date('d/m/Y H:I:s', strtotime($logCreatedDate))]),
+                $createdUrl,
+                ['iconCls' => 'g-icon g-icon-svg g-icon_size_16 g-icon-m_history g-icon-m_color_default']
+        ) ?>
+        <?php endif ?>
+        </div>
+    </div>
+<?php endif; endif ?>
+
+<?php endif ?>
+</div>
