@@ -1,0 +1,37 @@
+/*!
+ * Роли и права доступа пользователей (RoleGrid).
+ *
+ * Модуль "Роли и права доступа пользователей".
+ *
+ * Copyright 2015 Вeб-студия GearMagic
+ * Copyright Anton Tivonenko <anton.tivonenko@gmail.com>
+ * https://gearmagic.ru/license/
+ */
+
+/* Заливка заднего фона сетки (см. идент. viewManager) */
+#gm-userroles-grid .x-grid-view {
+    background: url("../images/watermark.svg") no-repeat calc(100% - 25px) calc(100% - 20px);
+    background-size: 100px;
+}
+
+
+/**
+ * Контекстное меню.
+ */
+/*  Пункт "Права доступа к модулям" */
+.gm-userroles__icon-permissions { background-image: url("../images/permission/icon_small.svg"); }
+
+
+/**
+ * Панель инструментов сетки.
+ */
+/* Значок "Добавить" */
+.gm-userroles__icon-add_large,
+.gm-userroles__icon-add_medium,
+.gm-userroles__icon-add { background-image: url("../images/icon-add.svg"); }
+.gm-userroles__icon-add_small { background-image: url("../images/icon-add_small.svg"); }
+/* Значок "Удалить" */
+.gm-userroles__icon-delete_large,
+.gm-userroles__icon-delete_medium,
+.gm-userroles__icon-delete { background-image: url("../images/icon-delete.svg"); }
+.gm-userroles__icon-delete_small { background-image: url("../images/icon-delete_small.svg"); }

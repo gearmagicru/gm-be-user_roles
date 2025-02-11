@@ -1,0 +1,79 @@
+/*!
+ * Права доступа к расширениям (ExtensionsGrid).
+ *
+ * Модуль "Роли и права доступа пользователей".
+ *
+ * Copyright 2015 Вeб-студия GearMagic
+ * Copyright Anton Tivonenko <anton.tivonenko@gmail.com>
+ * https://gearmagic.ru/license/
+ */
+
+/* Заливка заднего фона сетки (см. идент. viewManager) */
+#gm-userroles-extensions-grid .x-tree-view {
+    background: url("../images/extensions/watermark.svg") no-repeat calc(100% - 25px) calc(100% - 20px);
+    background-size: 100px;
+}
+
+
+/**
+ * Сетка.
+ */
+/* Столбец названий */
+#gm-userroles-extensions-grid .x-tree-node-text {
+    color: #444;
+    font: normal 14px/16px "Roboto Condensed", helvetica, arial, verdana, sans-serif;
+ }
+ #gm-userroles-extensions-grid .x-grid-tree-node-leaf .x-tree-node-text {
+    color: #665;
+ }
+ #gm-userroles-extensions-grid .x-grid-tree-node-leaf .x-tree-node-text span {
+    color: #bcbcbc;
+    font-size: 13px;
+ }
+ /* столбец разрешения родителя */
+ .g-gridcolumn-permission_pr {
+    display: block;
+    width: 100%;
+    height: 16px;
+    text-align: center;
+ }
+ .g-gridcolumn-permission_pr::after {
+     content: ' ';
+     display: inline-block;
+     width: 15px;
+     height: 15px;
+     background: #cccccc;
+     border-radius: 50%;
+ }
+ .g-gridcolumn-permission_pr.checked::after{
+    background: #90b9a3;
+ }
+ /* столбец результирующего разрешения */
+ .g-gridcolumn-permission_res {
+    display: block;
+    width: 100%;
+    height: 18px;
+    background: url("../images/permission/permission-lock.svg") no-repeat center center;
+  }
+.g-gridcolumn-permission_res.checked {
+    background: url("../images/permission/permission-unlock.svg") no-repeat center center;
+}
+ 
+
+/* Столбцы */
+.g-grid-row_role-module {
+    background-color: #e7e7e7;
+}
+.g-grid-row_role-permission_active {
+    color: #778;
+}
+.g-gridcolumn_role-module {
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+.g-gridcolumn_role-module img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 2px;
+}
