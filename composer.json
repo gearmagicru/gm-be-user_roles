@@ -1,13 +1,7 @@
 {
     "name": "gearmagicru/gm-be-user_roles",
-    "description": "Control panel module \"Roles and user permissions\"",
-    "keywords": [
-        "gm",
-        "gearmagic",
-        "GM Panel",
-        "module",
-        "user roles"
-    ],
+    "description": "Control Panel module \"Roles and user permissions\"",
+    "keywords": ["gearmagic", "gm-panel", "gm-component", "gm-module", "module", "roles"],
     "homepage": "https://apps.gearmagic.ru/component/gm-be-user_roles",
     "type": "component",
     "license": "MIT",
