@@ -1,6 +1,3 @@
-# файлы конфигурации
-config/*.so.php
-
 # кэш каталогов
 Thumbs.db
 *.DS_Store
